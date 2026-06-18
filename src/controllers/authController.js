@@ -79,7 +79,6 @@ async function refresh(req, res, next) {
     }
 
     const accessToken = generateAccessToken(user.id, user.email);
-
     res.json({ accessToken });
   } catch (err) {
     if (err.name === 'TokenExpiredError') {
@@ -88,7 +87,6 @@ async function refresh(req, res, next) {
     next(err);
   }
 }
-
 async function getMe(req, res, next) {
   try {
     const user = await User.findByPk(req.user.userId, {
